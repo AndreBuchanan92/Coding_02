@@ -1,46 +1,54 @@
-/*
-public:
-    // for initializing your stack
-    Stack();
-    // for destroying your stack, clean up your allocated memory!
-    ~Stack();
+#include "stack.h"
 
-    bool push(int, string);
-    bool pop(Data*);
-    bool peek(Data*);
-    bool isEmpty();
-    int count();
 
-private:
-    //do not initialize here, this is only for declaring
-    int top;
-    Data *stack[STACK_SIZE];
-*/
-
-#include <iostream> 
-#include <stack> 
-
-using namespace std;
-  
-int main () 
-{ 	 
-	stack<int> myStack; 
-	
-	myStack.push(5); 
-	myStack.push(3); 
-	myStack.push(2); 
-	
-	cout << "Number of ints on the stack " << mystack.size() << endl;
-	
-	while (!myStack.empty())
-	cout << "popping " << mystack.top() << endl; 
-	mystack.pop(); 
-	
-	bool push(int, string);
-    bool pop(Data*);
-    bool peek(Data*);
-    bool isEmpty();
-	
-	
-	
+bool Stack::push(int x, string stringid) 
+{ 
+    if (top >= (STACK_SIZE - 1)) { 
+        return false; 
+    } 
+    else { 
+        stack[++top] = x; 
+        cout << x << " pushed into stack\n"; 
+        return true; 
+    } 
 } 
+  
+bool pop() 
+{ 
+    if (top < 0) { 
+        cout << "Stack Underflow"; 
+        return false; 
+    } 
+    else { 
+        int x = a[top--]; 
+        return true; 
+    } 
+} 
+
+bool peek() 
+{ 
+    if (top < 0) { 
+        cout << "Stack is Empty"; 
+        return 0; 
+    } 
+    else { 
+        int x = a[top]; 
+        return x; 
+    } 
+} 
+  
+bool Stack::isEmpty() 
+{ 
+    if (top = 0) {
+    	return true;
+	}
+    else {
+    	return false;
+	}
+} 
+
+  int Stack::count() {
+  	std::stack<int> myints;
+	std::cout << "0. size: " << myints.size() << '\n';
+  }
+  

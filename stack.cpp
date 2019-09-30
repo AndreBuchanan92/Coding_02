@@ -1,7 +1,7 @@
 #include "stack.h"
 
 
-bool Stack::push(int x, string stringid) 
+bool Stack::push(Data x, string stringid) 
 { 
     if (top >= (STACK_SIZE - 1)) { 
         return false; 
@@ -52,3 +52,4 @@ bool Stack::isEmpty()
 	std::cout << "0. size: " << myints.size() << '\n';
   }
   
+

@@ -1,45 +1,54 @@
 #include "stack.h"
+#include <iostream>
+#include<string.h>
 
+using namespace std;
 
-bool Stack::push(Data x, string stringid) 
+bool Stack::push(int x, string stringid) 
 { 
-    if (top >= (STACK_SIZE - 1)) { 
+    Data * newNode=new Data;
+    if (top >= (STACK_SIZE)) { 
         return false; 
     } 
-    else { 
-        stack[++top] = x; 
-        cout << x << " pushed into stack\n"; 
+    else {
+    	newNode->id=x;
+    	newNode->data=stringid;
+    	
+    	stack[top++] = newNode; 
+        cout << stack[top-1]->id << " pushed into stack\n"; 
         return true; 
-    } 
+    }
 } 
   
-bool pop() 
+bool Stack::pop(Data * dataPtr) 
 { 
-    if (top < 0) { 
+    if (top == 0) { 
         cout << "Stack Underflow"; 
         return false; 
     } 
     else { 
-        int x = a[top--]; 
+    	*dataPtr=*stack[top-1];
+    	free(stack[top-1]);
+    	top--;
         return true; 
     } 
 } 
 
-bool peek() 
+bool Stack::peek(Data * dataPtr) 
 { 
-    if (top < 0) { 
+    if (top == 0) { 
         cout << "Stack is Empty"; 
-        return 0; 
+        return false; 
     } 
     else { 
-        int x = a[top]; 
-        return x; 
+		*dataPtr=*stack[top-1];
+		return true; 
     } 
 } 
   
 bool Stack::isEmpty() 
 { 
-    if (top = 0) {
+    if (top	== 0) {
     	return true;
 	}
     else {
@@ -47,9 +56,19 @@ bool Stack::isEmpty()
 	}
 } 
 
-  int Stack::count() {
-  	std::stack<int> myints;
-	std::cout << "0. size: " << myints.size() << '\n';
-  }
+int Stack::count() {
+ 
+	return top;
+	  }
+Stack::Stack() {
+	top=0;
+	for(int i=0;i<STACK_SIZE;i++)
+	{
+		stack[i]=(Data *)malloc(sizeof(Data));
+	}
+}
+Stack::~Stack() {
+}
   
+
 
